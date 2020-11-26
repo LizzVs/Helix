@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_catalog">
+
+    <fragment
+        android:id="@+id/nav_catalog"
+        android:name="com.hotel.ui.catalog.CatalogFragment"
+        android:label="Каталог"
+        tools:layout="@layout/fragment_catalog" />
+
+    <fragment
+        android:id="@+id/nav_directory"
+        android:name="com.hotel.ui.directory.DirectoryFragment"
+        android:label="@string/menu_directory"
+        tools:layout="@layout/fragment_directory" />
+
+    <fragment
+        android:id="@+id/nav_address"
+        android:name="com.hotel.ui.address.AddressFragment"
+        android:label="@string/menu_address"
+        tools:layout="@layout/fragment_address" />
+
+</navigation>
