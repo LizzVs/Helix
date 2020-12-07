@@ -24,32 +24,35 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
 
-        Button Autorization = findViewById(R.id.buttonAutorization);
-        Autorization.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent GoToNavig = new Intent(MainActivity.this,NavigationActivity.class);
-                startActivity(GoToNavig);
-            }
-        });
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://localhost/lab/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         MainInterface mainInterface = retrofit.create(MainInterface.class);
-        Call<List<Patients>> call = mainInterface.getPosts("");
+        Button Authorization = findViewById(R.id.buttonAutorization);
+        Authorization.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent GoToNavigation = new Intent(MainActivity.this,NavigationActivity.class);
+                startActivity(GoToNavigation);
+            }
+        });
+        Call<List<Patients>> call = mainInterface.getPosts("semenov_alex@mail.ru");
         call.enqueue(new Callback<List<Patients>>() {
             @Override
             public void onResponse(Call<List<Patients>> call, Response<List<Patients>> response) {
                 List<Patients> posts = response.body();
+                String content = "";
                 for (Patients post: posts)
                 {
-                    String content = "";
                     content += post.getId_patient();
-                    content += post.getLastname();
-                    content += post.getFirstname();
                 }
-                
+                if (!content.equals(""))
+                {
+
+                }
+
             }
 
             @Override
